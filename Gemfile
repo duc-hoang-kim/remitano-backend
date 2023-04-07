@@ -7,6 +7,8 @@ gem "pg", "1.4.6"
 gem "puma", "~> 5.0"
 gem "redis", "~> 4.0"
 gem "devise", "4.9.2"
+gem "figaro"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
