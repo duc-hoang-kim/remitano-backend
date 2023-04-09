@@ -9,6 +9,8 @@ gem "redis", "~> 4.0"
 gem "devise", "4.9.2"
 gem "figaro"
 gem "rspec"
+gem "pagy"
+gem "api-pagination"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
