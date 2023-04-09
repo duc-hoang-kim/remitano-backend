@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  scope :api do
+    scope :v1 do
+      devise_for :users
+    end
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  namespace :api do
+    namespace :v1 do
+      resources :videos, only: [:index, :create, :destroy]
+    end
+  end
 end
