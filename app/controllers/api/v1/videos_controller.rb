@@ -4,7 +4,7 @@ module Api
       before_action :set_video, only: %i[ show update destroy ]
 
       def index
-        @videos = Video.all
+        @videos = paginate Video.all, per_page: 4
 
         render json: { data: @videos }
       end
