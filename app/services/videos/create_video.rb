@@ -5,17 +5,19 @@ module Videos
 
     attr_reader :video
 
-    def initialize(youtube_url)
+    def initialize(current_user, youtube_url)
       super()
 
       youtube_url.strip!
+
+      @current_user = current_user
       @youtube_url = youtube_url
     end
 
     def call
       @video = Video.new({
         youtube_url: @youtube_url,
-        shared_by: 0
+        shared_by: @current_user.id
       })
       @video.youtube_id = extract_youtube_id
       return if error?
