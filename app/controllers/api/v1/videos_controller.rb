@@ -2,16 +2,17 @@ module Api
   module V1
     class VideosController < ApplicationController
       before_action :set_video, only: %i[ show update destroy ]
+      skip_before_action :authenticate_user!, only: :index
 
       def index
         @videos = paginate Video.all.order(created_at: :desc), per_page: 4
 
-        render json: { data: @videos }
+        render json: { data: ActiveModel::Serializer::CollectionSerializer.new(@videos) }
       end
 
       # POST /videos
       def create
-        service = Videos::CreateVideo.new(video_params[:youtube_url])
+        service = Videos::CreateVideo.new(current_user, video_params[:youtube_url])
         service.call
 
         if service.success?
