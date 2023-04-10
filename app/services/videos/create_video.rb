@@ -1,5 +1,5 @@
 module Videos
-  class CreateVideoService < ::Base
+  class CreateVideo < ::Base
     YOUTUBE_URL_PATTERN_1 = /youtube\.com\/watch\?v=/
     YOUTUBE_URL_PATTERN_2 = /youtu\.be\//
 
@@ -39,10 +39,11 @@ module Videos
       raise 'Missing youtube_url' unless @youtube_url
 
       youtube_id = nil
+
       if @youtube_url.match?(YOUTUBE_URL_PATTERN_1)
         youtube_id = CGI.parse(URI.parse(@youtube_url).query)["v"]&.first
       elsif @youtube_url.match?(YOUTUBE_URL_PATTERN_2)
-        youtube_id = @youtube_url.match(/youtu.be\/([a-zA-Z]|-)+/).to_s[9..]
+        youtube_id = @youtube_url.match(/youtu.be\/([a-zA-Z]|\d|-)+/).to_s[9..]
       end
       raise 'Cannot parse video id from the url' unless youtube_id
 

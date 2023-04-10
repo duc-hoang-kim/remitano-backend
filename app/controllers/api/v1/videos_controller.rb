@@ -4,14 +4,14 @@ module Api
       before_action :set_video, only: %i[ show update destroy ]
 
       def index
-        @videos = paginate Video.all, per_page: 4
+        @videos = paginate Video.all.order(created_at: :desc), per_page: 4
 
         render json: { data: @videos }
       end
 
       # POST /videos
       def create
-        service = Videos::CreateVideoService.new(video_params[:youtube_url])
+        service = Videos::CreateVideo.new(video_params[:youtube_url])
         service.call
 
         if service.success?

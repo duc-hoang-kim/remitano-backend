@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   scope :api do
     scope :v1 do
-      devise_for :users
+      devise_for :users, defaults: { format: :json }, controllers: {
+        sessions: 'auth/sessions',
+        registrations: 'auth/registrations',
+        confirmations: 'auth/confirmations'
+      }, skip: %i[password]
     end
   end
 
