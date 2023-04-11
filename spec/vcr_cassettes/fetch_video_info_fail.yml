@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=not-exist-id&key=AIzaSyCGHKKJhEGcpyjOjEm_EnYFWXlED_oJ2b8&part=snippet
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - youtube.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Tue, 11 Apr 2023 16:33:40 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "YIUPVpqNjppyCWOZfL-19bLb7uk",
+          "items": [],
+          "pageInfo": {
+            "totalResults": 0,
+            "resultsPerPage": 0
+          }
+        }
+  recorded_at: Tue, 11 Apr 2023 16:33:40 GMT
+recorded_with: VCR 6.1.0

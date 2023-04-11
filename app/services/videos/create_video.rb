@@ -1,14 +1,15 @@
 module Videos
   class CreateVideo < ::Base
-    YOUTUBE_URL_PATTERN_1 = /youtube\.com\/watch\?v=/
-    YOUTUBE_URL_PATTERN_2 = /youtu\.be\//
+    YOUTUBE_URL_PATTERN = /youtube\.com\/watch\?v=/
+    YOUTUBE_URL_SHARING_PATTERN = /youtu\.be\//
+    YOUTUBE_SHORT_URL_PATTERN = /youtube.com\/shorts/
 
     attr_reader :video
 
     def initialize(current_user, youtube_url)
       super()
 
-      youtube_url.strip!
+      youtube_url&.strip!
 
       @current_user = current_user
       @youtube_url = youtube_url
@@ -38,14 +39,16 @@ module Videos
     # https://www.youtube.com/watch?v={video_id}
     # https://youtu.be/{video_id}
     def extract_youtube_id
-      raise 'Missing youtube_url' unless @youtube_url
+      raise 'Missing youtube_url' if @youtube_url.blank?
 
       youtube_id = nil
 
-      if @youtube_url.match?(YOUTUBE_URL_PATTERN_1)
+      if @youtube_url.match?(YOUTUBE_URL_PATTERN)
         youtube_id = CGI.parse(URI.parse(@youtube_url).query)["v"]&.first
-      elsif @youtube_url.match?(YOUTUBE_URL_PATTERN_2)
+      elsif @youtube_url.match?(YOUTUBE_URL_SHARING_PATTERN)
         youtube_id = @youtube_url.match(/youtu.be\/([a-zA-Z]|\d|-)+/).to_s[9..]
+      elsif @youtube_url.match?(YOUTUBE_SHORT_URL_PATTERN)
+        youtube_id = @youtube_url.match(/shorts\/([a-zA-Z]|\d|-)+/).to_s[7..]
       end
       raise 'Cannot parse video id from the url' unless youtube_id
 

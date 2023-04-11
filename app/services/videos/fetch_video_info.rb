@@ -27,7 +27,7 @@ module Videos
         }
       end
 
-      errors << 'Cannot fetch video info'
+      @errors << 'Cannot fetch video info'
     rescue => e
       @errors << e.message
     end
