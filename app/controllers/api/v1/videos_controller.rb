@@ -4,8 +4,10 @@ module Api
       before_action :set_video, only: %i[ show update destroy ]
       skip_before_action :authenticate_user!, only: :index
 
+      VIDEO_PER_PAGE_DEFAULT = 4
+
       def index
-        @videos = paginate Video.all.order(created_at: :desc), per_page: 4
+        @videos = paginate Video.all.order(created_at: :desc), per_page: params[:per_page] || VIDEO_PER_PAGE_DEFAULT
 
         render json: { data: ActiveModel::Serializer::CollectionSerializer.new(@videos) }
       end
@@ -16,7 +18,7 @@ module Api
         service.call
 
         if service.success?
-          render json: { data: service.video }, status: :created
+          render json: { data: ActiveModelSerializers::SerializableResource.new(service.video) }, status: :created
         else
           render json: { error: service.errors }, status: :unprocessable_entity
         end

@@ -17,7 +17,7 @@ module Videos
     def call
       @video = Video.new({
         youtube_url: @youtube_url,
-        shared_by: @current_user.id
+        sharer_id: @current_user.id
       })
       @video.youtube_id = extract_youtube_id
       return if error?

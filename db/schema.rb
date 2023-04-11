@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_09_091951) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_11_120721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_09_091951) do
 
   create_table "videos", force: :cascade do |t|
     t.string "youtube_url", null: false
-    t.integer "shared_by", null: false
+    t.integer "sharer_id", null: false
     t.integer "upvote_count", default: 0
     t.integer "downvote_count", default: 0
     t.string "description"
