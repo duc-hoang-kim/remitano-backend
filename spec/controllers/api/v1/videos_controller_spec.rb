@@ -4,7 +4,7 @@ RSpec.describe Api::V1::VideosController, type: :controller do
   describe "POST /api/v1/videos" do
     let(:user) { create(:user) }
     let(:video) { create(:video, sharer: user) }
-    let(:service_double) { double(call: nil, success?: true, video: ) }
+    let(:service_double) { double(call: nil, success?: true, video: video) }
 
     before do
       allow(Videos::CreateVideo).to receive(:new).and_return(service_double)

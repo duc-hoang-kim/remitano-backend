@@ -27,10 +27,12 @@ gem "bootsnap", require: false
 gem "rack-cors"
 
 group :development, :test do
+  gem "webmock"
   gem "database_cleaner-active_record"
   gem "rspec"
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem "vcr"
   gem "letter_opener"
   gem "pry"
 end
