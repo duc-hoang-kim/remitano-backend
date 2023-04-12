@@ -12,7 +12,6 @@ RSpec.describe Api::V1::VideosController, type: :controller do
 
     context 'authenticated user' do
       before do
-        user.confirm
         sign_in(user)
       end
 

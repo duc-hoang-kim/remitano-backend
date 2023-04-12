@@ -3,6 +3,6 @@ class VideoSerializer < ActiveModel::Serializer
              :title, :created_at, :sharer_email, :youtube_id, :id
 
   def sharer_email
-    object.sharer.email
+    object.sharer&.email
   end
 end

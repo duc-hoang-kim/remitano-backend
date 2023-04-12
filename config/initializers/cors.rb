@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ENV['REMITANO_FE_CLIENT']
+    origins ENV['REMITANO_FE_CLIENT'], 'http://localhost', 'http://localhost:3001', 'http://localhost:4001'
 
     resource "*",
       headers: :any,
