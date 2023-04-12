@@ -65,7 +65,9 @@ RSpec.configure do |config|
 
   config.include Devise::Test::ControllerHelpers, type: :controller
 
-   config.before(:suite) do
+  config.include Warden::Test::Helpers
+
+  config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
 

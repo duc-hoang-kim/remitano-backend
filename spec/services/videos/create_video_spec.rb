@@ -87,11 +87,11 @@ describe ::Videos::CreateVideo do
   context "unsupported link" do
     let(:youtube_url) { "https://www.youtube.com/unsupported_link" }
 
-    it "fail with Cannot parse video id from the url error" do
+    it "fail with Invalid youtube url error" do
       subject.call
 
       expect(subject.success?).to be_falsy
-      expect(subject.errors).to eq(["Cannot parse video id from the url"])
+      expect(subject.errors).to eq(["Invalid youtube url"])
     end
   end
 

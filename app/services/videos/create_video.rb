@@ -50,7 +50,7 @@ module Videos
       elsif @youtube_url.match?(YOUTUBE_SHORT_URL_PATTERN)
         youtube_id = @youtube_url.match(/shorts\/([a-zA-Z]|\d|-)+/).to_s[7..]
       end
-      raise 'Cannot parse video id from the url' unless youtube_id
+      raise 'Invalid youtube url' unless youtube_id
 
       youtube_id
     end
