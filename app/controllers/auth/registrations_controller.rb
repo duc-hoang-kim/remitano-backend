@@ -1,6 +1,7 @@
 module Auth
   class RegistrationsController < Devise::RegistrationsController
     before_action :configure_sign_up_params, only: [:create]
+    skip_before_action :authenticate_user!
 
     def create
       build_resource(sign_up_params)

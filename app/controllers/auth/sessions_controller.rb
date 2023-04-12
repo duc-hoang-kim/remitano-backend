@@ -1,5 +1,7 @@
 module Auth
   class SessionsController < Devise::SessionsController
+    skip_before_action :authenticate_user!
+
     def create
       if session[:current_user_id]
         return render json: { error: 'User have already logged in' }, status: :forbidden
