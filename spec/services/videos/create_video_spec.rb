@@ -98,7 +98,7 @@ describe ::Videos::CreateVideo do
   context "youtube_url is not provided" do
     let(:youtube_url) { "" }
 
-    it "fail with CMissing youtube_url error" do
+    it "fail with Missing youtube_url error" do
       subject.call
 
       expect(subject.success?).to be_falsy

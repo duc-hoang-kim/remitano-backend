@@ -8,7 +8,7 @@ RUN bundle install
 
 COPY . .
 
-ENV RAILS_ENV=production
+ENV RAILS_ENV=development
 
 EXPOSE 3000
 

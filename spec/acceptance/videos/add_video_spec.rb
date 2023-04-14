@@ -10,7 +10,10 @@ describe "add a video flow", type: :feature do
       click_button("Share a Movie")
 
       fill_in "Youtube URL", with: youtube_url
-      click_button("Share")
+
+      VCR.use_cassette("fetch info #{youtube_url}") do
+        click_button("Share")
+      end
     end
 
     context "valid url" do
