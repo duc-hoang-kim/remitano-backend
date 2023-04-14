@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://127.0.0.1:9522/session/434ab844ccd068272e107a30ba6856aa/elements
+    uri: http://127.0.0.1:9522/session/194777fc7171ddf24db47fe328b0cb66/elements
     body:
       encoding: UTF-8
       string: '{"using":"xpath","value":".//input[((((./@type = ''submit'') or (./@type
@@ -48,11 +48,11 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"value":[{"element-6066-11e4-a52e-4f735466cecf":"ad1893f9-5bf2-45e0-bd28-98d385fda4e8"}]}'
-  recorded_at: Wed, 12 Apr 2023 17:17:17 GMT
+      string: '{"value":[{"element-6066-11e4-a52e-4f735466cecf":"c3079249-b139-4f2b-9f10-94002fc5e69d"}]}'
+  recorded_at: Fri, 14 Apr 2023 09:12:36 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9522/session/434ab844ccd068272e107a30ba6856aa/execute/sync
+    uri: http://127.0.0.1:9522/session/194777fc7171ddf24db47fe328b0cb66/execute/sync
     body:
       encoding: UTF-8
       string: '{"script":"return ((function(){function d(t,e,n){function r(t){var
@@ -99,7 +99,7 @@ http_interactions:
         e}var T={NONE:\"none\",HIDDEN:\"hidden\",SCROLL:\"scroll\"};return function
         i(t,e){function n(t){if(\"none\"==window.getComputedStyle(t).display)return!1;var
         e=r(t);if(\"function\"==typeof ShadowRoot&&e instanceof ShadowRoot){if(e.host.shadowRoot!==e)return!1;e=e.host}return!(!e||e.nodeType!=Node.DOCUMENT_NODE&&e.nodeType!=Node.DOCUMENT_FRAGMENT_NODE)||!(e&&e.tagName&&\"DETAILS\"==e.tagName.toUpperCase()&&!e.open&&\"SUMMARY\"!=t.tagName)&&(e&&n(e))}return
-        d(t,!!e,n)}})()).apply(null, arguments)","args":[{"element-6066-11e4-a52e-4f735466cecf":"ad1893f9-5bf2-45e0-bd28-98d385fda4e8"}]}'
+        d(t,!!e,n)}})()).apply(null, arguments)","args":[{"element-6066-11e4-a52e-4f735466cecf":"c3079249-b139-4f2b-9f10-94002fc5e69d"}]}'
     headers:
       Accept:
       - application/json
@@ -125,14 +125,14 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":true}'
-  recorded_at: Wed, 12 Apr 2023 17:17:17 GMT
+  recorded_at: Fri, 14 Apr 2023 09:12:36 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9522/session/434ab844ccd068272e107a30ba6856aa/execute/sync
+    uri: http://127.0.0.1:9522/session/194777fc7171ddf24db47fe328b0cb66/execute/sync
     body:
       encoding: UTF-8
       string: '{"script":"return arguments[0].matches('':disabled, select:disabled
-        *'')","args":[{"element-6066-11e4-a52e-4f735466cecf":"ad1893f9-5bf2-45e0-bd28-98d385fda4e8"}]}'
+        *'')","args":[{"element-6066-11e4-a52e-4f735466cecf":"c3079249-b139-4f2b-9f10-94002fc5e69d"}]}'
     headers:
       Accept:
       - application/json
@@ -158,10 +158,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":false}'
-  recorded_at: Wed, 12 Apr 2023 17:17:17 GMT
+  recorded_at: Fri, 14 Apr 2023 09:12:36 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9522/session/434ab844ccd068272e107a30ba6856aa/element/ad1893f9-5bf2-45e0-bd28-98d385fda4e8/click
+    uri: http://127.0.0.1:9522/session/194777fc7171ddf24db47fe328b0cb66/element/c3079249-b139-4f2b-9f10-94002fc5e69d/click
     body:
       encoding: UTF-8
       string: "{}"
@@ -190,5 +190,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":null}'
-  recorded_at: Wed, 12 Apr 2023 17:17:17 GMT
+  recorded_at: Fri, 14 Apr 2023 09:12:36 GMT
 recorded_with: VCR 6.1.0

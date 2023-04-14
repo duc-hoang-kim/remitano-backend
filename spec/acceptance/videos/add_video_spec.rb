@@ -10,16 +10,15 @@ describe "add a video flow", type: :feature do
       click_button("Share a Movie")
 
       fill_in "Youtube URL", with: youtube_url
-
-      VCR.use_cassette("fetch info #{youtube_url}") do
-        click_button("Share")
-      end
     end
 
     context "valid url" do
       let(:youtube_url) { "https://www.youtube.com/watch?v=yzInC0lHIMM" }
 
       it "add video to page" do
+        VCR.use_cassette("fetch info valid url") do
+          click_button("Share")
+        end
         expect(page).to have_content("Post Malone - One Night in Rome, Italy (Full Concert)")
       end
     end
@@ -28,6 +27,9 @@ describe "add a video flow", type: :feature do
       let(:youtube_url) { "https://facebook.com" }
 
       it "show error" do
+        VCR.use_cassette("fetch info invalid url") do
+          click_button("Share")
+        end
         expect(page).to have_content("Invalid youtube url")
       end
     end
