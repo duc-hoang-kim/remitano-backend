@@ -23,6 +23,6 @@ test:
 production:
   <<: *default
   host: db
-  username: postgres
-  password: postgres
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   database: remitano_backend_prod
