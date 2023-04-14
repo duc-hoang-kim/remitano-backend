@@ -1,5 +1,6 @@
-# What's done in this Repo:
+## What's done:
 - APIs for the Frontend client
+- Support multiple form of youtube video urls: sharing urls, youtube short urls, ...
 - Service object to fetch video information
 - `Dockerfile`, `docker-compose.yml` for deployment, it's deployed [here](http://3.26.19.253/) on AWS EC2 
 - Integration testing, I put the guide to run integration test below
