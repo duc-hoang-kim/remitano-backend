@@ -7,8 +7,6 @@ services:
     environment:
       RAILS_ENV: production
       RAILS_SERVE_STATIC_FILES: 'true'
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/remitano_backend_prod
-      REMITANO_FE_CLIENT: 'localhost'
     depends_on:
       - db
 
