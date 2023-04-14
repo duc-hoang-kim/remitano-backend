@@ -8,8 +8,8 @@ RUN bundle install
 
 COPY . .
 
-ENV RAILS_ENV=development
+ENV RAILS_ENV=production
 
 EXPOSE 3000
 
-ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
