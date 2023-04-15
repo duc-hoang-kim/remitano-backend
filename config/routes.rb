@@ -6,6 +6,10 @@ Rails.application.routes.draw do
         registrations: 'auth/registrations',
         confirmations: 'auth/confirmations'
       }, skip: %i[password]
+
+      devise_scope :user do
+        resource :sessions, module: :auth, only: :show
+      end
     end
   end
 

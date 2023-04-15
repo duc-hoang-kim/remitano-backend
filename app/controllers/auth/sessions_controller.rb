@@ -1,6 +1,10 @@
 module Auth
   class SessionsController < Devise::SessionsController
-    skip_before_action :authenticate_user!
+    skip_before_action :authenticate_user!, except: :show
+
+    def show
+      render json: { data: { user: current_user } }, status: :ok
+    end
 
     def create
       if session[:current_user_id]
@@ -8,29 +12,28 @@ module Auth
       end
 
       self.resource = warden.authenticate!(auth_options)
-      set_flash_message!(:notice, :signed_in)
       sign_in(resource_name, resource)
 
-      if current_user
-        session[:current_user_id] = current_user.id
+      session[:current_user_id] = current_user.id
 
-        render json: {
-          data: { user: current_user }
-        }, status: :ok
-      else
-        render json: { error: 'Wrong email or password' }, status: :unauthorized
-      end
+      render json: {
+        data: { user: current_user }
+      }, status: :created
     end
 
     def destroy
       signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
 
-      if signed_out
-        render json: {
-          data: { success: true }
-        }, status: :ok
-      else
-        render json: { error: 'User have already logged out' }, status: :forbidden
+      render json: {
+        data: { success: true }
+      }, status: :ok
+    end
+
+    private
+
+    def verify_signed_out_user
+      if all_signed_out?
+        render json: { error: 'User have already logged out.' }, status: :forbidden
       end
     end
   end
