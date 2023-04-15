@@ -86,4 +86,8 @@ RSpec.configure do |config|
   config.append_after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.before(:each, type: :devise_controller) do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+  end
 end
